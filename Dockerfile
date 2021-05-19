@@ -1,4 +1,6 @@
 FROM amazoncorretto:11.0.4
-VOLUME /tmp
-ADD target/spring-boot-docker-0.0.1-SNAPSHOT.jar app.jar
+# Specify JAR location
+ARG JAR_FILE=target/*.jar
+# Copy the JAR
+COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
